@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,11 +10,16 @@ public class main {
 
 
     public static void main(String[] args) throws Exception {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Specify training file path");
+        String training_path = scan.nextLine();
+        System.out.println("Specify training file path");
+        String test_path = scan.nextLine();
         List<List<String>> training_raw = new ArrayList<>();
         List<List<String>> test_raw = new ArrayList<>();
 
 
-        try(BufferedReader training_reader = new BufferedReader(new FileReader("iris_training.csv"))){
+        try(BufferedReader training_reader = new BufferedReader(new FileReader(training_path))){
 
             String line;
             while ((line = training_reader.readLine()) != null) {
@@ -26,7 +32,7 @@ public class main {
         }
 
 
-        try(BufferedReader test_reader = new BufferedReader(new FileReader("iris_test.csv"))){
+        try(BufferedReader test_reader = new BufferedReader(new FileReader(test_path))){
 
             String line;
             while ((line = test_reader.readLine()) != null) {
@@ -45,7 +51,7 @@ public class main {
 
         System.out.println("Model accuracy: " + classifier.testClassifier());
 
-        Scanner scan = new Scanner(System.in);
+
         boolean flag = true;
         while (flag) {
             System.out.println("Do you want to classify a vector?");

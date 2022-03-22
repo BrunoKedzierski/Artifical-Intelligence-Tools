@@ -3,6 +3,8 @@ import java.util.*;
 
 public class KnnClassifier {
 
+
+
     List<List<String>> testSet;
     List<List<String>> trainingSet;
     int k;
@@ -21,22 +23,26 @@ public class KnnClassifier {
 
 
         for ( List<String> line_test: testSet) {
+
             Map<Double, String> neighbors = new TreeMap<>();
             for ( List<String> line_training: trainingSet){
                 double distance = calcDistance(line_test.subList(0,line_test.size()-1), line_training.subList(0,line_training.size()-1));
                 neighbors.put(distance, line_training.get(line_training.size() -1 ));
             }
-            
+
 
 
 
 
 
             String prediciton =  decideKNeigbors( Arrays.copyOf(neighbors.values().toArray(), neighbors.values().toArray().length, String[].class), false);
-           // System.out.println("Prediction: " + prediciton + " " + "Actual: " + line_test.get(line_test.size() -1));
+           System.out.println("Prediction: " + prediciton + " " + "Actual: " + line_test.get(line_test.size() -1));
             if (prediciton.equals(line_test.get(line_test.size() -1))) {
-              //  System.out.println("Correct!");
+              System.out.println("Correct!");
                 no_of_correct += 1;
+            }
+            else {
+                System.out.println("Wrong!");
             }
         }
 
