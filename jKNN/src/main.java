@@ -15,6 +15,8 @@ public class main {
         String training_path = scan.nextLine();
         System.out.println("Specify training file path");
         String test_path = scan.nextLine();
+        System.out.println("Specify k parameter");
+        int k = Integer.parseInt(scan.nextLine());
         List<List<String>> training_raw = new ArrayList<>();
         List<List<String>> test_raw = new ArrayList<>();
 
@@ -47,7 +49,7 @@ public class main {
 
 
 
-        KnnClassifier classifier = new KnnClassifier(test_raw,training_raw,3);
+        KnnClassifier classifier = new KnnClassifier(test_raw,training_raw,k);
 
         System.out.println("Model accuracy: " + classifier.testClassifier());
 
@@ -66,6 +68,8 @@ public class main {
             else
                 System.out.println("try again");
         }
+
+        scan.close();
 
 
 
