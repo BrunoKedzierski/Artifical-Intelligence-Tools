@@ -1,4 +1,5 @@
 import csv as read_csv
+from random import shuffle
 
 from perceptron import Perceptron
 
@@ -21,8 +22,9 @@ with open(test_set_path, 'r') as file:
 training_rows = [ list(map(float, vector)) for vector in training_rows[1:]]
 test_rows = [ list(map(float, vector)) for vector in test_rows[1:]]
 
-
-perceptron = Perceptron(training_rows,0.1,15)
+shuffle(training_rows)
+shuffle(test_rows)
+perceptron = Perceptron(training_rows,1,1)
 perceptron.learn()
 perceptron.test(test_rows)
 

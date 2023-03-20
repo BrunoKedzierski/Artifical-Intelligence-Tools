@@ -26,7 +26,7 @@ class Perceptron:
                     self.weights[i] = self.weights[i] + self.learning_rate * error_term * vector[i]
 
     def test(self, test_data):
-        success_no = 0;
+        success_no = 0
         for vector in test_data:
             prediction = self.predict(vector[:-1])
             print(f"Predicted: {prediction} , actual: {vector[-1]}")
